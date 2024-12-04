@@ -33,3 +33,9 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }} # Utilise le token GitHub Actions pour publier le rapport allureee
         publish_dir: ./allure-report
+
+        #WEBHOOK_MOSSAL_TEST
+
+    - name: Notify Slack # Envoie une notification Slack avec le lien vers le rapport Allure. (détails configuration à voir sur le fichier README)
+      run: |
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"📊 *Le rapport Allure est maintenant disponible !* 🚀\n\nVous pouvez consulter le rapport complet en suivant ce lien : <https://awatagiltoo1.github.io/MossallAutomationPlaywright/|Allure Report>"}' ${{ secrets.WEBHOOK_MOSSAL_TEST }}
