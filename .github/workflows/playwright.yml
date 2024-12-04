@@ -17,11 +17,19 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+
+
+
+    - name: Run Playwright tests with allure report 
+      run: npm run  test:allure #permet d'executer le test et de générer le rapport allure dans le CI
+    - name: Upload Allure results # Sauvegarde du rapport Allure depuis le projet vers le CI
+      uses: actions/upload-artifact@v4 #chargement du rapport dans un artifact
       with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+        name: allure-report
+        path: allure-report  # Le répertoire contenant le rapport généré par Allure
+
+    - name: Deploy Allure Report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }} # Utilise le token GitHub Actions pour publier le rapport allure
+        publish_dir: ./allure-report
