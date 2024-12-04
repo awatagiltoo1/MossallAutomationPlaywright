@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","12146","connexion","chromium","Wed Dec 04 12:34:26 UTC 2024","passed","Wed Dec 04 12:34:38 UTC 2024","","login.spec.ts","",""
